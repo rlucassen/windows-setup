@@ -9,6 +9,8 @@ New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 Set-ItemProperty -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 0
 #   Show labels on taskbar till full
 New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarGlomLevel' -Value 1
+#   Reinstate windows photo viewer
+reg import .\windows_photo_viewer.reg
 
 # Restart explorer.exe
 Stop-Process -ProcessName explorer
