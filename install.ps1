@@ -30,10 +30,12 @@ choco install whatsapp -y
 choco install microsoft-windows-terminal -y
 Copy-Item .\windows-terminal.settings.json -Destination "$env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 choco install git -y --params "/NoShellIntegration"
+git config --global credential.helper wincred
 choco install spotify -y
 choco install potplayer -y
 choco install nodejs-lts -y
 choco install adobereader -y --params "/UpdateMode:3"
+choco install microsoft-teams.install -y
 
 # VS Code
 choco install vscode -y
