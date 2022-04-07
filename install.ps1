@@ -33,7 +33,6 @@ Import-StartLayout -LayoutPath "StartLayout.xml" -MountPath "C:\"
 # Restart explorer.exe
 Stop-Process -ProcessName explorer
 
-
 # Install chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
@@ -71,7 +70,7 @@ Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Common\' -Name 'UI 
 
 # Downloading
 choco install transmission -y
-#choco install ipvanish -y
+choco install expressvpn -y
 
 # Development
 choco install sql-server-2019 -y --skip-virus-check --params="'/SQLSYSADMINACCOUNTS:RobinLucassen /UpdateEnabled:True'"
