@@ -11,6 +11,24 @@ Set-ItemProperty -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' 
 New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarGlomLevel' -Value 1
 #   Reinstate windows photo viewer
 reg import .\windows_photo_viewer.reg
+#   Remove Edit with Paint 3D
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.jpeg\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.jpg\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.jpe\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.png\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.bmp\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.gif\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.obj\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.stl\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.tif\Shell\3D Edit' -Recurse
+Remove-Item -Path 'HKLM:\SOFTWARE\Classes\SystemFileAssociations\.tiff\Shell\3D Edit' -Recurse
+
+# Create Folders
+New-Item -ItemType Directory -Path "C:\Work"
+New-Item -ItemType Directory -Path "C:\Zooi"
+
+# Set Windows StartLayout
+Import-StartLayout -LayoutPath "StartLayout.xml" -MountPath "C:\"
 
 # Restart explorer.exe
 Stop-Process -ProcessName explorer
@@ -36,6 +54,8 @@ choco install potplayer -y
 choco install nodejs-lts -y
 choco install adobereader -y --params "/UpdateMode:3"
 choco install microsoft-teams.install -y
+choco install procexp -y
+choco install windirstat -y
 
 # VS Code
 choco install vscode -y
@@ -57,3 +77,5 @@ choco install transmission -y
 choco install sql-server-2019 -y --skip-virus-check --params="'/SQLSYSADMINACCOUNTS:RobinLucassen /UpdateEnabled:True'"
 choco install sql-server-management-studio -y
 choco install visualstudio2019community -y --params "--add Microsoft.VisualStudio.Workload.Azure --add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.NetCoreTools --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Component.ClassDesigner"
+choco install resharper -y
+choco install dotpeek -y
